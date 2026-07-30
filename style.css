@@ -1,0 +1,169 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #1c1c1e;
+  --card-radius: 24px;
+  --text: #fff;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* Blurred headshot behind everything, like Linktree's desktop view */
+.backdrop {
+  position: fixed;
+  inset: -40px;
+  background: url("assets/headshot.webp") center 20% / cover no-repeat;
+  filter: blur(60px) brightness(0.35);
+  z-index: -1;
+}
+
+.page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+.hero-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 25%;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 90px 20px 22px;
+  text-align: center;
+  background: linear-gradient(to top, rgba(20, 20, 22, 0.92) 0%, rgba(20, 20, 22, 0.55) 55%, transparent 100%);
+}
+
+.name {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+.tagline {
+  margin-top: 4px;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.socials {
+  margin-top: 14px;
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+}
+
+.socials a {
+  color: #fff;
+  display: inline-flex;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.socials a:hover {
+  transform: scale(1.15);
+  opacity: 0.85;
+}
+
+.socials svg {
+  width: 26px;
+  height: 26px;
+  fill: currentColor;
+}
+
+/* Links */
+.links {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.btn {
+  display: block;
+  background: #fff;
+  color: #111;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 18px 20px;
+  border-radius: 999px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* Featured card with image */
+.card {
+  display: block;
+  position: relative;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  text-decoration: none;
+  color: #fff;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  transition: transform 0.15s ease;
+}
+
+.card:hover {
+  transform: scale(1.015);
+}
+
+.card-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.card-label {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 60px 16px 16px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.05rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+}
+
+.foot {
+  margin-top: 36px;
+  text-align: center;
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+@media (max-width: 480px) {
+  .name {
+    font-size: 1.6rem;
+  }
+
+  .hero-photo {
+    aspect-ratio: 3 / 4;
+  }
+}
