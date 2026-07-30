@@ -8,6 +8,7 @@
   --bone: #f2efe6;
   --ink: #141414;
   --acid: #c6ff2e;
+  --electric: #1fc8ff;
   --blood: #e8232a;
   --yt: #ff0000;
   --font-display: "Unbounded", sans-serif;
@@ -50,6 +51,8 @@ body {
 
 .page:first-of-type {
   padding-top: 32px;
+  position: relative;
+  z-index: 2;
 }
 
 /* ---------- Hero ---------- */
@@ -139,7 +142,9 @@ body {
 /* ---------- Marquee ---------- */
 .marquee {
   width: 110%;
-  margin: 26px 0 24px -5%;
+  margin: -18px 0 24px -5%;
+  position: relative;
+  z-index: 1;
   transform: rotate(-1.5deg);
   background: var(--acid);
   color: var(--ink);
@@ -239,9 +244,9 @@ body {
   animation-play-state: paused;
 }
 
-/* Green animated Get Headshots button */
+/* Electric blue animated Get Headshots button */
 .btn-hs {
-  background: var(--acid);
+  background: var(--electric);
   box-shadow: 6px 6px 0 var(--bone);
   animation: breathe 2.6s ease-in-out 0.7s infinite;
 }
