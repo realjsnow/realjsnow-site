@@ -142,7 +142,7 @@ body {
 /* ---------- Marquee ---------- */
 .marquee {
   width: 110%;
-  margin: -18px 0 24px -5%;
+  margin: -9px 0 24px -5%;
   position: relative;
   z-index: 1;
   transform: rotate(-1.5deg);
@@ -242,6 +242,18 @@ body {
 .btn-yt:hover {
   box-shadow: 12px 12px 0 var(--bone);
   animation-play-state: paused;
+}
+
+/* TikTok follower count button */
+.btn-tt {
+  background: #010101;
+  color: #fff;
+  border-color: #010101;
+  box-shadow: 6px 6px 0 #25f4ee, 10px 10px 0 #fe2c55;
+}
+
+.btn-tt:hover {
+  box-shadow: 9px 9px 0 #25f4ee, 14px 14px 0 #fe2c55;
 }
 
 /* Electric blue animated Get Headshots button */
