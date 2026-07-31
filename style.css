@@ -309,12 +309,52 @@ body {
   box-shadow: 12px 12px 0 var(--blood);
 }
 
+.card-media {
+  display: block;
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
 .card-img {
   display: block;
   width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
-  border-radius: 14px;
+  /* Censored: the poster is graphic, so it stays obscured */
+  filter: blur(22px) saturate(0.75) brightness(0.72);
+  transform: scale(1.15);
+}
+
+/* Censor bars over the blur */
+.card-censor {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      -12deg,
+      rgba(10, 10, 10, 0.82) 0 26px,
+      rgba(10, 10, 10, 0) 26px 52px
+    );
+}
+
+.card-warning {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-3deg);
+  background: var(--bone);
+  color: var(--ink);
+  border: 3px solid var(--ink);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  box-shadow: 4px 4px 0 var(--blood);
 }
 
 .card-label {
