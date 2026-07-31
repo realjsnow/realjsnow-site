@@ -88,6 +88,21 @@ body {
   letter-spacing: 0.01em;
 }
 
+/* Deter casual image grabbing (pairs with protect-images.js) */
+img {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+}
+
+/* Visible keyboard focus (mouse clicks stay clean) */
+a:focus-visible {
+  outline: 3px solid var(--electric);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
 /* ---------- Socials ---------- */
 .socials {
   margin-bottom: 24px;
@@ -371,6 +386,35 @@ body {
   transform: rotate(10deg);
   filter: drop-shadow(4px 4px 0 rgba(0, 0, 0, 0.55));
   z-index: 2;
+}
+
+/* ---------- 404 ---------- */
+.notfound {
+  padding: 60px 0 10px;
+}
+
+.code-404 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(5rem, 26vw, 10rem);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 3px var(--acid);
+}
+
+@supports not (-webkit-text-stroke: 3px black) {
+  .code-404 {
+    color: var(--acid);
+  }
+}
+
+.notfound-text {
+  margin-top: 14px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: clamp(0.9rem, 4vw, 1.15rem);
 }
 
 /* ---------- Footer ---------- */
