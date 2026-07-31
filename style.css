@@ -271,70 +271,47 @@ a:focus-visible {
   box-shadow: 9px 9px 0 #25f4ee, 14px 14px 0 #fe2c55;
 }
 
-/* The money button — loudest thing on the page */
-.btn-hs {
-  position: relative;
+/* Headshots card — sells the work by showing it */
+.card.card-hs {
   overflow: hidden;
-  background: linear-gradient(100deg, #0047ff 0%, #1fc8ff 48%, #29e7ff 100%);
-  color: #fff;
-  font-family: var(--font-display);
-  font-size: 1.02rem;
-  padding: 21px 18px;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
-  box-shadow: 6px 6px 0 var(--bone), 0 0 30px rgba(31, 200, 255, 0.55);
-  animation: breathe 2.6s ease-in-out 0.7s infinite;
+  box-shadow: 8px 8px 0 var(--electric);
 }
 
-.btn-hs:hover {
-  box-shadow: 10px 10px 0 var(--bone), 0 0 44px rgba(31, 200, 255, 0.8);
-  animation-play-state: paused;
+.card.card-hs:hover {
+  box-shadow: 12px 12px 0 var(--electric);
 }
 
-/* Light sweeping across the surface */
-.btn-hs::after {
-  content: "";
-  position: absolute;
-  top: -60%;
-  bottom: -60%;
-  left: -90px;
-  width: 46px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
-  transform: rotate(18deg);
-  animation: sheen 3.6s ease-in-out infinite;
+/* Label sits below the photos so it never covers a face */
+.card-hs .card-label {
+  position: static;
+  display: block;
+  padding: 15px 16px;
+  background: var(--bone);
+  color: var(--ink);
+  border-top: 3px solid var(--ink);
+  border-radius: 0;
+  font-size: 1rem;
 }
 
-/* Keep content above the sweep */
-.btn-hs .btn-icon,
-.btn-hs .btn-label,
-.btn-hs .arrow {
-  position: relative;
-  z-index: 1;
+.hs-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  background: var(--ink);
 }
 
-@keyframes sheen {
-  0% {
-    left: -90px;
-  }
-  60%, 100% {
-    left: 115%;
-  }
+.hs-strip img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
 }
 
-.btn-hs .btn-icon {
-  animation: snap 4s ease-in-out infinite;
-  stroke-width: 2.3;
-}
-
-@keyframes snap {
-  0%, 82%, 100% {
-    transform: rotate(0);
-  }
-  87% {
-    transform: rotate(-12deg) scale(1.15);
-  }
-  93% {
-    transform: rotate(10deg) scale(1.15);
-  }
+.hs-cam {
+  width: 20px;
+  height: 20px;
+  vertical-align: -4px;
+  margin-right: 7px;
 }
 
 @keyframes breathe {
@@ -467,10 +444,7 @@ a:focus-visible {
 
 @media (prefers-reduced-motion: reduce) {
   .marquee-track,
-  .btn-yt,
-  .btn-hs,
-  .btn-hs::after,
-  .btn-hs .btn-icon {
+  .btn-yt {
     animation: none;
   }
 }
