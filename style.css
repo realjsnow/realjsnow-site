@@ -15,21 +15,36 @@
   --font-body: "Space Grotesk", sans-serif;
 }
 
+/* The tilted marquee is intentionally wider than the viewport, so both
+   html and body must contain it — hidden on body alone still leaves the
+   document horizontally scrollable, which reads as sideways drift on mobile.
+   `clip` is preferred over `hidden`: it contains overflow without creating
+   a scroll container. */
+html,
+body {
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
 body {
   font-family: var(--font-body);
   background: var(--ink);
   color: var(--bone);
   min-height: 100vh;
-  overflow-x: hidden;
 }
 
-/* Blurred headshot wash behind everything */
+/* Blurred headshot wash behind everything.
+   Promoted to its own GPU layer so the expensive blur rasterizes once
+   instead of repainting on every scroll frame. */
 .backdrop {
   position: fixed;
   inset: -40px;
   background: url("assets/headshot.webp") center 20% / cover no-repeat;
   filter: blur(50px) brightness(0.3) saturate(1.3);
   z-index: -1;
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 /* Film grain over everything */
@@ -40,6 +55,8 @@ body {
   pointer-events: none;
   opacity: 0.14;
   mix-blend-mode: soft-light;
+  transform: translateZ(0);
+  backface-visibility: hidden;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -182,7 +199,8 @@ a:focus-visible {
 
 @keyframes marquee {
   to {
-    transform: translateX(-50%);
+    /* translate3d keeps the scroll on the compositor, off the main thread */
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
